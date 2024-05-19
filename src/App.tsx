@@ -1,11 +1,17 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import RNScreen from './screens/RNScreen';
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from '@react-navigation/native';
+import {useColorScheme} from 'react-native';
+import MainNavigator from './navigation/MainNavigator';
 
 const App = () => {
+  const theme = useColorScheme();
   return (
-    <NavigationContainer>
-      <RNScreen />
+    <NavigationContainer theme={theme === 'dark' ? DarkTheme : DefaultTheme}>
+      <MainNavigator />
     </NavigationContainer>
   );
 };
