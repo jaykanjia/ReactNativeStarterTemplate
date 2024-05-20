@@ -3,25 +3,26 @@ import React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 import RNScreen from '../screens/RNScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import {Text} from 'react-native';
-// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import HomeSvg from '../assets/icons/home.svg';
+import SettingSvg from '../assets/icons/settings.svg';
+import ReactNativeSvg from '../assets/icons/react-native.svg';
 
-// type IconProps = {
-//   color: string;
-//   size: number;
-// };
+type IconProps = {
+  color: string;
+  size: number;
+};
 
-// const ChatIcon = ({color, size}: IconProps) => (
-//   <MaterialCommunityIcons name="chat" color={color} size={size} />
-// );
+const HomeIcon = ({color, size}: IconProps) => (
+  <HomeSvg stroke={color} height={size} width={size} />
+);
 
-// const SettingsIcon = ({color, size}: IconProps) => (
-//   <MaterialCommunityIcons name="bell" color={color} size={size} />
-// );
+const SettingsIcon = ({color, size}: IconProps) => (
+  <SettingSvg stroke={color} height={size} width={size} />
+);
 
-// const LearnIcon = ({color, size}: IconProps) => (
-//   <MaterialCommunityIcons name="react" color={color} size={size} />
-// );
+const ReactNativeIcon = ({color, size}: IconProps) => (
+  <ReactNativeSvg fill={color} height={size} width={size} />
+);
 
 const Tab = createBottomTabNavigator();
 
@@ -34,7 +35,7 @@ const HomeStackNavigator = () => {
         options={{
           title: 'Home',
           tabBarActiveTintColor: '#e91e63',
-          // tabBarIcon: () => <Text>Home</Text>,
+          tabBarIcon: HomeIcon,
         }}
       />
       <Tab.Screen
@@ -43,6 +44,8 @@ const HomeStackNavigator = () => {
         options={{
           title: 'Settings',
           tabBarActiveTintColor: '#e91e63',
+          tabBarIcon: SettingsIcon,
+          tabBarBadge: 3,
         }}
       />
       <Tab.Screen
@@ -52,6 +55,8 @@ const HomeStackNavigator = () => {
           headerShown: false,
           title: 'React Native',
           tabBarActiveTintColor: '#e91e63',
+          tabBarIcon: ReactNativeIcon,
+          tabBarBadge: 'New',
         }}
       />
     </Tab.Navigator>
